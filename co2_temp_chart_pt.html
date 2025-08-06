@@ -1,4 +1,3 @@
-                       
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -23,11 +22,11 @@
                 Concentração de CO₂ vs. Temperatura Global (1880-2023)
             </h1>
             <p class="text-center text-sm text-gray-600 dark:text-gray-400 mb-6">
-                Uma visualização da correlação entre os níveis de CO₂ atmosférico e a anomalia da temperatura global desde a Revolução Industrial.
+                Uma visualização da correlação entre os níveis de CO₂ atmosférico e a anomalia da temperatura global.
             </p>
             
-            <!-- Contêiner do gráfico para garantir responsividade -->
-            <div class="relative h-[60vh] w-full">
+            <!-- CORREÇÃO: A altura do gráfico agora é controlada aqui para evitar scroll interno. -->
+            <div class="relative w-full" style="height:420px;">
                 <canvas id="co2TempChart"></canvas>
             </div>
 
@@ -40,20 +39,14 @@
 
     <script>
         // --- Dados para o Gráfico ---
-        // Anos de referência para o eixo X.
         const years = [
             1880, 1890, 1900, 1910, 1920, 1930, 1940, 1950, 1960, 
             1970, 1980, 1990, 2000, 2010, 2020, 2023
         ];
-
-        // Concentração de CO₂ em partes por milhão (ppm).
         const co2Data = [
             290.7, 294.4, 295.8, 299.6, 302.7, 307.4, 310.5, 311.3, 316.9, 
             325.7, 338.7, 354.2, 369.5, 389.9, 414.2, 419.3
         ];
-
-        // Anomalia da temperatura global em graus Celsius (°C).
-        // (Diferença em relação à temperatura média de 1951-1980).
         const tempData = [
             -0.20, -0.29, -0.08, -0.35, -0.25, -0.12, 0.05, -0.02, 0.03, 
             0.07, 0.26, 0.44, 0.64, 0.85, 1.02, 1.17
@@ -63,7 +56,7 @@
         const ctx = document.getElementById('co2TempChart').getContext('2d');
         
         const co2TempChart = new Chart(ctx, {
-            type: 'line', // Tipo de gráfico: linha
+            type: 'line',
             data: {
                 labels: years,
                 datasets: [
@@ -72,18 +65,18 @@
                         data: co2Data,
                         borderColor: 'rgb(255, 99, 132)',
                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        yAxisID: 'y', // Associa ao eixo Y da esquerda
+                        yAxisID: 'y',
                         tension: 0.1,
                         pointRadius: 4,
                         pointHoverRadius: 7,
-                        fill: false, // Não preenche a área sob a linha
+                        fill: false,
                     },
                     {
                         label: 'Anomalia de Temperatura (°C)',
                         data: tempData,
                         borderColor: 'rgb(54, 162, 235)',
                         backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        yAxisID: 'y1', // Associa ao eixo Y da direita
+                        yAxisID: 'y1',
                         tension: 0.1,
                         pointRadius: 4,
                         pointHoverRadius: 7,
@@ -92,74 +85,39 @@
                 ]
             },
             options: {
-                responsive: true, // O gráfico se ajusta ao tamanho do contêiner
-                maintainAspectRatio: false, // Permite que o gráfico preencha a altura do contêiner
+                responsive: true,
+                maintainAspectRatio: false, // Essencial para o controlo da altura
                 interaction: {
-                    mode: 'index', // Mostra tooltips para todos os datasets no mesmo ponto do eixo X
+                    mode: 'index',
                     intersect: false,
                 },
-                stacked: false,
                 plugins: {
-                    title: {
-                        display: false, // Título principal já está no HTML
-                    },
                     tooltip: {
                         backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                        titleFont: {
-                            size: 16,
-                            weight: 'bold',
-                        },
-                        bodyFont: {
-                            size: 14,
-                        },
+                        titleFont: { size: 16, weight: 'bold' },
+                        bodyFont: { size: 14 },
                         padding: 12,
                         cornerRadius: 8,
-                        displayColors: true,
-                        boxPadding: 4,
                     }
                 },
                 scales: {
-                    // Eixo X (Anos)
                     x: {
-                        title: {
-                            display: true,
-                            text: 'Ano',
-                            font: { size: 14, weight: 'bold' },
-                            color: '#6b7280'
-                        },
-                        grid: {
-                            color: 'rgba(200, 200, 200, 0.1)'
-                        }
+                        title: { display: true, text: 'Ano', font: { size: 14, weight: 'bold' }, color: '#6b7280' },
+                        grid: { color: 'rgba(200, 200, 200, 0.1)' }
                     },
-                    // Eixo Y principal (Esquerda) para CO₂
                     y: {
                         type: 'linear',
                         display: true,
                         position: 'left',
-                        title: {
-                            display: true,
-                            text: 'Concentração de CO₂ (ppm)',
-                            font: { size: 14, weight: 'bold' },
-                            color: 'rgb(255, 99, 132)'
-                        },
-                        grid: {
-                            drawOnChartArea: false, // Desenha a grade apenas para o eixo principal (temperatura)
-                        },
+                        title: { display: true, text: 'CO₂ (ppm)', font: { size: 14, weight: 'bold' }, color: 'rgb(255, 99, 132)' },
+                        grid: { drawOnChartArea: false },
                     },
-                    // Eixo Y secundário (Direita) para Temperatura
                     y1: {
                         type: 'linear',
                         display: true,
                         position: 'right',
-                        title: {
-                            display: true,
-                            text: 'Anomalia de Temperatura (°C)',
-                            font: { size: 14, weight: 'bold' },
-                            color: 'rgb(54, 162, 235)'
-                        },
-                        grid: {
-                            color: 'rgba(200, 200, 200, 0.2)'
-                        }
+                        title: { display: true, text: 'Anomalia de Temperatura (°C)', font: { size: 14, weight: 'bold' }, color: 'rgb(54, 162, 235)' },
+                        grid: { color: 'rgba(200, 200, 200, 0.2)' }
                     }
                 }
             }
@@ -167,4 +125,18 @@
     </script>
 </body>
 </html>
+```
 
+---
+### **Passo 2: Usar o código final no WordPress**
+
+Depois de guardar as alterações no GitHub, volte ao seu post no WordPress. Use o código `<iframe>` abaixo no seu bloco "HTML Personalizado". A altura de `480px` está dentro do seu intervalo ideal e deve agora funcionar perfeitamente, sem nenhuma barra de rolagem interna.
+
+```html
+<iframe 
+  src="https://carlavp.github.io/co2_temp_chart_pt.html" 
+  width="100%" 
+  height="480" 
+  style="border:1px solid #ccc; border-radius: 8px;" 
+  title="Gráfico: CO₂ vs. Temperatura Global">
+</iframe>
