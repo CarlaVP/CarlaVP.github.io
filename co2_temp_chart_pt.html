@@ -2,8 +2,11 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <!-- OTIMIZAÇÃO: Meta descrição adicionada -->
+    <meta name="description" content="Visualização interativa da correlação entre os níveis de CO₂ atmosférico e a temperatura média global desde 1880.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gráfico: CO₂ vs. Temperatura Global</title>
+    <!-- OTIMIZAÇÃO: Título do HTML atualizado -->
+    <title>Gráfico de CO₂ e Temperatura Global (1880–2023)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,9 +23,9 @@
     </style>
 </head>
 <body>
-    <!-- CORREÇÃO: Layout simplificado para remover altura extra. Gráfico ocupa todo o espaço. -->
     <div class="relative w-full" style="height:100vh;">
-        <canvas id="co2TempChart"></canvas>
+        <!-- OTIMIZAÇÃO: Atributos de acessibilidade (ARIA) adicionados -->
+        <canvas id="co2TempChart" role="img" aria-label="Gráfico de linha comparando a concentração de CO₂ e o aumento da temperatura global entre 1880 e 2023."></canvas>
     </div>
 
     <script>
