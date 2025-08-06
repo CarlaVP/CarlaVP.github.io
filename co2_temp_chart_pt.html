@@ -18,15 +18,16 @@
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
     <div class="container mx-auto p-4 sm:p-6 lg:p-8">
         <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 sm:p-6">
-            <h1 class="text-2xl sm:text-3xl font-bold text-center text-gray-900 dark:text-white mb-2">
+            <!-- CORREÇÃO: Fonte do título reduzida -->
+            <h1 class="text-xl sm:text-2xl font-bold text-center text-gray-900 dark:text-white mb-2">
                 Concentração de CO₂ vs. Temperatura Global (1880-2023)
             </h1>
             <p class="text-center text-sm text-gray-600 dark:text-gray-400 mb-6">
                 Uma visualização da correlação entre os níveis de CO₂ atmosférico e a anomalia da temperatura global.
             </p>
             
-            <!-- CORREÇÃO: A altura do gráfico agora é controlada aqui para evitar scroll interno. -->
-            <div class="relative w-full" style="height:420px;">
+            <!-- CORREÇÃO: Altura do gráfico reduzida para evitar scroll interno -->
+            <div class="relative w-full" style="height:380px;">
                 <canvas id="co2TempChart"></canvas>
             </div>
 
@@ -125,18 +126,4 @@
     </script>
 </body>
 </html>
-```
-
----
-### **Passo 2: Usar o código final no WordPress**
-
-Depois de guardar as alterações no GitHub, volte ao seu post no WordPress. Use o código `<iframe>` abaixo no seu bloco "HTML Personalizado". A altura de `480px` está dentro do seu intervalo ideal e deve agora funcionar perfeitamente, sem nenhuma barra de rolagem interna.
-
-```html
-<iframe 
-  src="https://carlavp.github.io/co2_temp_chart_pt.html" 
-  width="100%" 
-  height="480" 
-  style="border:1px solid #ccc; border-radius: 8px;" 
-  title="Gráfico: CO₂ vs. Temperatura Global">
-</iframe>
+`
