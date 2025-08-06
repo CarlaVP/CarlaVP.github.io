@@ -2,11 +2,11 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <!-- OTIMIZAÇÃO: Meta descrição adicionada -->
-    <meta name="description" content="Visualização interativa da correlação entre os níveis de CO₂ atmosférico e a temperatura média global desde 1880.">
+    <!-- OTIMIZAÇÃO: Meta descrição atualizada -->
+    <meta name="description" content="Visualização interativa da correlação entre a concentração de CO₂ atmosférico e a temperatura média global desde a Revolução Industrial.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- OTIMIZAÇÃO: Título do HTML atualizado -->
-    <title>Gráfico de CO₂ e Temperatura Global (1880–2023)</title>
+    <title>Gráfico CO₂ vs. Temperatura Global (1880–2023)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,9 +23,15 @@
     </style>
 </head>
 <body>
+    <!--
+    OTIMIZAÇÃO: Comentário estruturado adicionado para contexto.
+    Gráfico comparativo entre os níveis de CO₂ atmosférico e a temperatura média global entre 1880 e 2023.
+    Dados baseados em fontes confiáveis como NOAA, NASA e IPCC.
+    Esta visualização é parte do conteúdo do blog "Desenrolando o Meio Ambiente".
+    -->
     <div class="relative w-full" style="height:100vh;">
-        <!-- OTIMIZAÇÃO: Atributos de acessibilidade (ARIA) adicionados -->
-        <canvas id="co2TempChart" role="img" aria-label="Gráfico de linha comparando a concentração de CO₂ e o aumento da temperatura global entre 1880 e 2023."></canvas>
+        <!-- OTIMIZAÇÃO: Atributos de acessibilidade (ARIA) atualizados -->
+        <canvas id="co2TempChart" role="img" aria-label="Gráfico interativo de CO₂ vs. Temperatura média global (1880 a 2023)"></canvas>
     </div>
 
     <script>
