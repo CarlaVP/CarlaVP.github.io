@@ -12,30 +12,14 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Fundo cinzento claro */
         }
     </style>
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-    <!-- CORREÇÃO: Padding reduzido para dar mais largura ao gráfico -->
-    <div class="container mx-auto p-1 sm:p-2">
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-2 sm:p-3">
-            <!-- CORREÇÃO: Fonte do título reduzida -->
-            <h1 class="text-base sm:text-lg font-bold text-center text-gray-900 dark:text-white mb-1">
-                CO₂ vs. Temperatura Global (1880-2023)
-            </h1>
-            <p class="text-center text-xs text-gray-500 dark:text-gray-400 mb-3">
-                Correlação entre CO₂ e anomalia da temperatura.
-            </p>
-            
-            <!-- CORREÇÃO: Altura do gráfico reduzida -->
-            <div class="relative w-full" style="height:340px;">
-                <canvas id="co2TempChart"></canvas>
-            </div>
-
-            <div class="mt-3 text-xs text-gray-500 dark:text-gray-400 text-center">
-                <p><strong>Fonte:</strong> NASA/GISS & NOAA/ESRL.</p>
-            </div>
-        </div>
+<body>
+    <!-- CORREÇÃO: Layout simplificado para remover altura extra. Gráfico diretamente no corpo da página. -->
+    <div class="relative w-full" style="height:350px;">
+        <canvas id="co2TempChart"></canvas>
     </div>
 
     <script>
@@ -88,11 +72,14 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                interaction: {
-                    mode: 'index',
-                    intersect: false,
-                },
                 plugins: {
+                    title: {
+                        display: true,
+                        text: 'CO₂ vs. Temperatura Global (1880-2023)',
+                        font: {
+                            size: 14
+                        }
+                    },
                     legend: {
                         labels: {
                             font: {
@@ -111,7 +98,7 @@
                 scales: {
                     x: {
                         ticks: { font: { size: 10 } },
-                        title: { display: true, text: 'Ano', font: { size: 10, weight: 'bold' }, color: '#6b7280' },
+                        title: { display: false }, // Título do eixo removido para poupar espaço
                         grid: { color: 'rgba(200, 200, 200, 0.1)' }
                     },
                     y: {
