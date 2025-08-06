@@ -17,20 +17,20 @@
     </style>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-    <!-- CORREÇÃO: Container sem padding para alargar o caixote branco -->
     <div class="container mx-auto p-1">
-        <!-- CORREÇÃO: O caixote branco com padding vertical reduzido -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-2 sm:p-3">
+        <!-- CORREÇÃO: Padding interno do caixote branco reduzido -->
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-2">
             <h1 class="text-base sm:text-lg font-bold text-center text-gray-900 dark:text-white mb-1">
                 CO₂ vs. Temperatura Global (1880-2023)
             </h1>
             
-            <!-- CORREÇÃO: Altura do gráfico reduzida para 300px -->
-            <div class="relative w-full" style="height:300px;">
+            <!-- CORREÇÃO: Altura do gráfico reduzida para 280px -->
+            <div class="relative w-full" style="height:280px;">
                 <canvas id="co2TempChart"></canvas>
             </div>
 
-            <div class="mt-2 text-xs text-gray-500 dark:text-gray-400 text-center">
+            <!-- CORREÇÃO: Margem superior do texto da fonte reduzida -->
+            <div class="mt-1 text-xs text-gray-500 dark:text-gray-400 text-center">
                 <p><strong>Fonte:</strong> NASA/GISS & NOAA/ESRL.</p>
             </div>
         </div>
