@@ -16,19 +16,22 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 flex items-center justify-center min-h-screen">
-    <div class="container mx-auto p-4 max-w-2xl">
-        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 sm:p-6">
-            <h1 class="text-xl sm:text-2xl font-bold text-center text-gray-900 dark:text-white mb-4">
+<!-- CORREÇÃO: Removida a classe 'min-h-screen' para evitar altura excessiva -->
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 flex items-center justify-center">
+    <div class="container mx-auto p-2 max-w-2xl">
+        <!-- CORREÇÃO: Padding interno reduzido -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-3 sm:p-4">
+            <h1 class="text-xl sm:text-2xl font-bold text-center text-gray-900 dark:text-white mb-2">
                 Emissões de GEE por Setor no Brasil (%)
             </h1>
             
-            <!-- Contêiner do gráfico com altura definida -->
-            <div class="relative w-full" style="height:400px;">
+            <!-- CORREÇÃO: Altura do gráfico reduzida -->
+            <div class="relative w-full" style="height:380px;">
                 <canvas id="sectorChart" role="img" aria-label="Gráfico de rosca mostrando as emissões de gases de efeito estufa por setor. Mudança no uso da terra e florestas: 46%. Agropecuária: 28%. Energia: 19%. Resíduos: 5%. Processos industriais: 2%."></canvas>
             </div>
 
-            <div class="mt-4 text-xs text-gray-500 dark:text-gray-400 text-center">
+            <!-- CORREÇÃO: Margem superior reduzida -->
+            <div class="mt-2 text-xs text-gray-500 dark:text-gray-400 text-center">
                 <p><strong>Fonte dos Dados:</strong> Baseado em dados do SEEG/Observatório do Clima.</p>
             </div>
         </div>
@@ -41,7 +44,6 @@
         const sectorChart = new Chart(ctx, {
             type: 'doughnut', // Tipo de gráfico: rosca
             data: {
-                // Rótulos para cada fatia do gráfico
                 labels: [
                     'Mudança no uso da terra e florestas', 
                     'Agropecuária', 
@@ -51,9 +53,7 @@
                 ],
                 datasets: [{
                     label: 'Emissões por Setor',
-                    // Dados percentuais correspondentes a cada rótulo
                     data: [46, 28, 19, 5, 2],
-                    // Cores de fundo para cada fatia
                     backgroundColor: [
                         '#16a34a', // Verde para Florestas
                         '#f97316', // Laranja para Agropecuária
@@ -61,7 +61,6 @@
                         '#6b7280', // Cinza para Resíduos
                         '#8b5cf6'  // Roxo para Indústria
                     ],
-                    // Cor da borda de cada fatia
                     borderColor: '#ffffff',
                     borderWidth: 2,
                     hoverOffset: 8
@@ -71,17 +70,15 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    // Configuração da legenda
                     legend: {
-                        position: 'bottom', // Posição da legenda
+                        position: 'bottom',
                         labels: {
-                            padding: 20,
+                            padding: 15, // Padding da legenda reduzido
                             font: {
                                 size: 12
                             }
                         }
                     },
-                    // Configuração das dicas que aparecem ao passar o mouse
                     tooltip: {
                         callbacks: {
                             label: function(context) {
@@ -102,7 +99,6 @@
                         cornerRadius: 8,
                     }
                 },
-                // Animação do gráfico
                 animation: {
                     animateScale: true,
                     animateRotate: true
